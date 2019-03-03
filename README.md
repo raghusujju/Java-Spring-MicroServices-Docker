@@ -1,7 +1,7 @@
-#####Sample Project for Qantas
+##### Sample Project for Qantas
 
 
-###Description: 
+### Description: 
 
 Provide APIs(REST) to manage user creation,updation and deletion use case which can be consumed by either mobile app or web channel.
 
@@ -9,13 +9,13 @@ Provide APIs(REST) to manage user creation,updation and deletion use case which 
  
 The services involved in this solution are developed using micro-services architecture. Eurea server is used for service discovery. 
 
-###Services
+### Services
 
 The project contains a backend database service, spring controller service that recieves the web request and eureka server that is used to deployed the services.
 
- ##eureka-server: This contains the code to run eureka server.
+ ## eureka-server: This contains the code to run eureka server.
  
- ##db-service:  This contains the code that runs in-memory H2 database that stores the information about users and their details. The DAO layer is implemented using Spring Data Rest and rest repositories such that the JPA layer is directly exposed as rest urls. This service is deployed and exposed from eureka server. 
+ ## db-service:  This contains the code that runs in-memory H2 database that stores the information about users and their details. The DAO layer is implemented using Spring Data Rest and rest repositories such that the JPA layer is directly exposed as rest urls. This service is deployed and exposed from eureka server. 
  
  rest-service:  This contains the code that exposes the actual web apis that can potentially be consumed by various clients. This is also deployed on eureka server. This service users RestTemplate to communicate to the db-service to fetch/update data.
  
