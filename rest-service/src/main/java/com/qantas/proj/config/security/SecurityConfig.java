@@ -12,11 +12,24 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 public class SecurityConfig extends WebSecurityConfigurerAdapter{
 
 	private final String API_PATH_PATTERN = "/qantas/userapp/**";
+	
+	@Value("${qantas.security.test.password}")
+	private String testPassword;
+	
+	@Value("${qantas.security.admin.user}")
+	private String adminUser;
+	
+	@Value("${qantas.security.admin.user}")
+	private String adminPassword;
+	
+	private final String API_PATH_PATTERN = "/qantas/userapp/**";
+	
 	@Override
  	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
- 		auth.inMemoryAuthentication().withUser("test").password("{noop}test").roles("USER").and()
- 		.withUser("admin").password("{noop}admin").roles("ADMIN");
+ 		auth.inMemoryAuthentication().withUser(testUser).password("{noop}"+testPassword).roles("USER").and()
+ 		.withUser(adminUser).password("{noop}"+adminPassword).roles("ADMIN");
  	}
+	
 	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
