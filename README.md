@@ -22,14 +22,18 @@ The project contains a backend database service, spring controller service that 
  ## rest-service:  
  This contains the code that exposes the actual web apis that can potentially be consumed by various clients. This is also deployed on eureka server. This service users RestTemplate to communicate to the db-service to fetch/update data.
  
- #### Security:  Spring security is used to authorise and authenticate users that interact with the system. The project uses basic in memory authentication client to show case the security layer and its implementation by the rest-service. Two users "testuser" and "admin" are created with roles ROLE_USER and ROLE_ADMIN.  THe user with ROLE_ADMIN has access to all the users in the system and also the deletion operation.  The normal users can create, update the user but cannot delete. 
+ #### Security:  
+ Spring security is used to authorise and authenticate users that interact with the system. The project uses basic in memory authentication client to show case the security layer and its implementation by the rest-service. Two users "testuser" and "admin" are created with roles ROLE_USER and ROLE_ADMIN.  THe user with ROLE_ADMIN has access to all the users in the system and also the deletion operation.  The normal users can create, update the user but cannot delete. 
  
  The solution can be extended to use an external identity management system for user authentication and authorization using Oauth2.0.
  
- #### Tests:  Develoepd unit tests cases for Controller and the serivce layer which has certain business logic. Especially, that deals with existing users and authorization with roles.  
+ #### Tests:  
+ Developed unit tests cases for Controller and the serivce layer which has certain business logic. Especially, that deals with existing users and authorization with roles.  
  
- #### Api Documentation:  Swagger is used to expose the apis to the clients.  The swagger ui is deployed along with the rest-service and it is availabe at the endpoint hosturl/swagger-ui.html. All the apis exposed by the rest-service can be tested from the swagger-ui itself. However, i have also used postman and Restlet client (browser plugin) for testing. 
+ #### Api Documentation:  
+ Swagger is used to expose the apis to the clients.  The swagger ui is deployed along with the rest-service and it is availabe at the endpoint hosturl/swagger-ui.html. All the apis exposed by the rest-service can be tested from the swagger-ui itself. However, i have also used postman and Restlet client (browser plugin) for testing. 
  
- #### Docker: All the modules will be provided as docker images which can be deployed on to any VM containing docker. 
+ #### Docker: 
+ All the modules will be provided as docker images which can be deployed on to any VM containing docker. 
 		In actual live scenario, the services are built using the build pipeline which emits the docker container as output.
  
