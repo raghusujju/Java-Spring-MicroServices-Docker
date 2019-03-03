@@ -25,5 +25,7 @@ The project contains a backend database service, spring controller service that 
  
  Tests:  Develoepd unit tests cases for Controller and the serivce layer which has certain business logic. Especially, that deals with existing users and authorization with roles.  
  
+ Api Documentation:  Swagger is used to expose the apis to the clients.  The swagger ui is deployed along with the rest-service and it is availabe at the endpoint hosturl/swagger-ui.html. All the apis exposed by the rest-service can be tested from the swagger-ui itself. However, i have also used postman and Restlet client (browser plugin) for testing. 
+ 
  
  
