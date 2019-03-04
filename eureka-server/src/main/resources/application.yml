@@ -10,7 +10,7 @@ eureka:
     registerWithEureka: false
     fetchRegistry: false
     service-url:
-      default-zone: http://localhost:8090/eureka
+      defaultZone: http://localhost:8090/eureka
 
   server:
     waitTimeInMsWhenSyncEmpty: 0
