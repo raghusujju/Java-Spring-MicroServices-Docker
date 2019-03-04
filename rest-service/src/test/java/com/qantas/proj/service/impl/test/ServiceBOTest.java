@@ -174,4 +174,15 @@ public class ServiceBOTest {
 		assertEquals(user.getUserId(), user2.getUserId());
 	}
 	
+	@Test(expected=ServiceException.class)
+	public void throwExceptionIfUserDoesNotExistsForUpdate() throws ServiceException {
+		
+		createRoleForAuth("ROLE_ADMIN",user.getUserId());
+		
+		when(restTemplate.exchange(Mockito.anyString(),Mockito.eq(HttpMethod.GET),Mockito.eq(null),Mockito.eq(new ParameterizedTypeReference<Resource<User>>(){}))).thenThrow(new HttpClientErrorException(HttpStatus.NOT_FOUND));
+		
+		User updateUser = serviceBO.updateUser(user);
+		
+	}
+	
 }

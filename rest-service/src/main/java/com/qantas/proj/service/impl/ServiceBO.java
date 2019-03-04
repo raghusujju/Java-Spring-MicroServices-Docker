@@ -89,7 +89,7 @@ public class ServiceBO implements BOServiceInterface{
 	}
 
 	public User updateUser(User user) throws ServiceException {
-		if( isRole(ROLE_ADMIN)|| getUserFromAuth().equals(user.getUserId())) {
+		if( isUserExists(user.getUserId()) && (isRole(ROLE_ADMIN)|| getUserFromAuth().equals(user.getUserId()))) {
 			ResponseEntity<Resource<User>> exchange = restTemplate.exchange(dbServiceUrl,HttpMethod.POST,new HttpEntity<User>(user), new ParameterizedTypeReference<Resource<User>>(){});
 			User content = exchange.getBody().getContent();
 			return content;
