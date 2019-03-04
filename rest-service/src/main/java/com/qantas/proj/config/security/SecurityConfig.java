@@ -1,5 +1,6 @@
 package com.qantas.proj.config.security;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -13,6 +14,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 
 	private final String API_PATH_PATTERN = "/qantas/userapp/**";
 	
+	@Value("${qantas.security.test.user}")
+	private String testUser;
+	
 	@Value("${qantas.security.test.password}")
 	private String testPassword;
 	
@@ -22,7 +26,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 	@Value("${qantas.security.admin.user}")
 	private String adminPassword;
 	
-	private final String API_PATH_PATTERN = "/qantas/userapp/**";
 	
 	@Override
  	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
