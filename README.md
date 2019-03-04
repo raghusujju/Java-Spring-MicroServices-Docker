@@ -37,4 +37,51 @@ The project contains a backend database service, spring controller service that 
  #### Docker: 
  All the modules will be provided as docker images which can be deployed on to any VM containing docker. 
 		In actual live scenario, the services are built using the build pipeline which emits the docker container as output.
+
+####### How to build and run
+
+## To build jar files
+
+Each module can be build using maven install command as given below
+mvn install  or mvn clean install
+
+This will run all the test cases and builds the jar file containing the code
+
+## To build docker image
+
+To build docker image run the maven command
+
+mvn install dockerfile:build 
+
+This will build the docker file and pushes it to the docker repository. The property 
+<docker.image.prefix>qantas-restservice</docker.image.prefix> in the pom.xml defines the repository to which the docker is pushed. 
+
+db-service will be pushed to the docker repository "qantas/dbservice"
+rest-service will be pushed to docker repository "qantas-restservice/restservice"
+eureka-service will be pushed to docker repository "springio/eurekaserver"
+
+
+### To RUN
+
+First the eureka service should be run as this is used for service discovery.  The other two services get registered with this service.
+
+Command to run eureka service is 
+
+docker run -it -p 8090:8090 <dockerimageid>
+
+Command to run db-service is 
+
+docker run -it -p 8084:8084 --network host <dockerimageid>
+
+Command to run rest-service is 
+
+docker run -it -p 8091:8091 --network host <dockerimageid>
+
+
+
+
+
+
+
+
  
