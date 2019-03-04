@@ -67,17 +67,37 @@ First the eureka service should be run as this is used for service discovery.  T
 
 Command to run eureka service is 
 
-docker run -it -p 8090:8090 <dockerimageid>
+docker run -d -p 8090:8090 <dockerimageid>
+
+check if the service is running at localhost:8090. it should take you to Eureka landing page.
 
 Command to run db-service is 
 
-docker run -it -p 8084:8084 --network host <dockerimageid>
+docker run -d -p 8084:8084 --network host <dockerimageid>
+
+check if the service is running at localhost:8084.  Also the eureka landing page would be udpated with the service entry. 
 
 Command to run rest-service is 
 
-docker run -it -p 8091:8091 --network host <dockerimageid>
+docker run -d -p 8091:8091 --network host <dockerimageid>
+
+check if the service is running at localhost:8091/swagger-ui.html.  Also the eureka landing page would be udpated with the service entry. 
 
 
+Start using the Swagger ui to test the functionalities. 
+There are currently two user created for by the spring security authentication
+
+User: test
+password: test
+Role assumed is : ROLE_USER
+
+User: admin
+password: admin
+Role assumed is : ROLE_ADMIN
+
+Please be informed that when logged in as test user, update can only be perfomed on test user and deletion is not possible as only adminstrator has deletion rights. 
+
+Also, getAllUsers can only be performed by admin user. 
 
 
 
