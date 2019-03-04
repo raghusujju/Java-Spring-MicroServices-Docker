@@ -17,6 +17,7 @@
 	<properties>
 		<java.version>1.8</java.version>
 		<spring-cloud.version>Greenwich.RELEASE</spring-cloud.version>
+		<docker.image.prefix>qantas</docker.image.prefix>
 	</properties>
 
 	<dependencies>
@@ -63,6 +64,20 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+			<plugin>
+				<groupId>com.spotify</groupId>
+				<artifactId>dockerfile-maven-plugin</artifactId>
+				<version>1.4.9</version>
+				<configuration>
+					 <tag>${project.version}</tag>
+					<repository>${docker.image.prefix}/${project.artifactId}</repository>
+					<forceTags>true</forceTags>
+					<buildArgs>
+						<JAR_FILE>target/${project.build.finalName}.jar</JAR_FILE>
+					</buildArgs>
+				</configuration>
+			</plugin>
+			
 		</plugins>
 	</build>
 
