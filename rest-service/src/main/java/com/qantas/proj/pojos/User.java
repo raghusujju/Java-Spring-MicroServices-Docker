@@ -6,12 +6,15 @@ import java.util.List;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import io.swagger.annotations.ApiModelProperty;
+
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class User {
 
 	private String userId;
 	private String fname;
 	private String lname;
+	@ApiModelProperty(notes="Date of Birth in yyy-mm-dd format",example="2012-12-02")
 	@JsonFormat(pattern="yyyy-MM-dd")
 	private Date dob;
 
