@@ -1,4 +1,4 @@
-##### Sample Project for Qantas
+##### Sample Project for a Client
 
 
 ### Description: 
